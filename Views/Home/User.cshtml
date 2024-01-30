@@ -1,0 +1,20 @@
+@model ASP.NET_project.Models.User
+@{
+    ViewData["Title"] = "User";
+}
+
+<form action="/Home/User" method="post">
+    <div class="form-group">
+        <label for="email">Email/Username</label>
+        <input type="text" class="form-control" id="email" placeholder="Enter email or username" asp-for="Email" value="ahmed@gmail.com">
+    </div>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter name" asp-for="Name" value="ahmed">
+    </div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter username" asp-for="UserName" value="ahmed69">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
