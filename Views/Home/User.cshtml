@@ -6,15 +6,20 @@
 <form action="/Home/User" method="post">
     <div class="form-group">
         <label for="email">Email/Username</label>
-        <input type="text" class="form-control" id="email" placeholder="Enter email or username" asp-for="Email" value="ahmed@gmail.com">
+        <input type="text" class="form-control" id="email" placeholder="Enter email or username" asp-for="Email">
     </div>
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Enter name" asp-for="Name" value="ahmed">
+        <input type="text" class="form-control" id="name" placeholder="Enter name" asp-for="Name">
     </div>
     <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="Enter username" asp-for="UserName" value="ahmed69">
+        <input type="text" class="form-control" id="username" placeholder="Enter username" asp-for="UserName">
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="text" class="form-control" id="password" placeholder="Enter password" asp-for="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
 </form>
+<a href="@Url.Action("Login", "Home")">Already have an account? Login</a>
