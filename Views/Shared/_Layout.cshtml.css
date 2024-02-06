@@ -39,6 +39,11 @@ button.accept-policy {
   line-height: inherit;
 }
 
+.container{
+  height: 85vh;
+}
+
+
 .footer {
   position: absolute;
   bottom: 0;

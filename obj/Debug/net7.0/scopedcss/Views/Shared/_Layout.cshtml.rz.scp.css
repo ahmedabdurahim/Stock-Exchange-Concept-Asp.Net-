@@ -39,6 +39,11 @@ button.accept-policy[b-o1u62agbcq] {
   line-height: inherit;
 }
 
+.container[b-o1u62agbcq]{
+  height: 85vh;
+}
+
+
 .footer[b-o1u62agbcq] {
   position: absolute;
   bottom: 0;
