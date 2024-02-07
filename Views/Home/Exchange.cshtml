@@ -1,18 +1,18 @@
 @{
     ViewData["Title"] = "Exchange";
 
-     var randomStockTickers = new List<(string Ticker, decimal Price, int Quantity)>
+     var randomStockTickers = new List<(string Ticker, decimal Price, decimal Entry, int Quantity)>
     {
-        ("AAPL", 150.20m, 10),
-        ("GOOGL", 2500.50m, 5),
-        ("AMZN", 3200.00m, 8),
-        ("MSFT", 300.10m, 12),
-        ("FB", 350.75m, 7),
-        ("TSLA", 800.00m, 3),
-        ("JPM", 150.40m, 15),
-        ("V", 220.30m, 20),
-        ("NVDA", 600.25m, 6),
-        ("NFLX", 550.50m, 4)
+        ("AAPL", 150.20m, 160.30m, 10),
+        ("GOOGL", 2500.50m, 2384.0m, 5),
+        ("AMZN", 3200.00m, 3101.12m, 8),
+        ("MSFT", 300.10m, 420.10m, 12),
+        ("FB", 350.75m, 355.98m, 7),
+        ("TSLA", 800.00m, 760.88m, 3),
+        ("JPM", 150.40m, 300.98m, 15),
+        ("V", 220.30m, 210.2m, 20),
+        ("NVDA", 600.25m, 542.33m, 6),
+        ("NFLX", 550.50m, 490.23m,4)
     };
 }
 
@@ -63,11 +63,11 @@
     .bottom th,
     .bottom td {
         padding: 8px;
-        @* text-align: center; *@
+        text-align: center;
     }
     
     .bottom tr:hover {
-        background-color: lightgray;
+        background-color: #0c0c35;
     }
 </style>
 
@@ -141,23 +141,26 @@
     </div>
 
     <div class="bottom">
+    <h2>Open Positions</h2>
     <table>
       <thead>
           <tr>
               <th>Asset Name</th>
               <th>Quantity</th>
               <th>Price</th>
+              <th>Entry</th>
               <th>Unrealized PnL</th>
           </tr>
       </thead>
       <tbody>
           @foreach (var stock in randomStockTickers)
           {
-              var pnl = (stock.Price - 200) * stock.Quantity; // Assuming a fixed reference price of 200
+              var pnl = (stock.Entry - stock.Price) * stock.Quantity; // Assuming a fixed reference price of 200
               <tr>
                   <td>@stock.Ticker</td>
                   <td>@stock.Quantity</td>
                   <td>@stock.Price</td>
+                  <td>@stock.Entry</td>
                   <td style="color: @(pnl < 0 ? "red" : "green")">@pnl</td>
               </tr>
           }

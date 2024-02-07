@@ -43,6 +43,8 @@ public class HomeController : Controller
         {
             return RedirectToAction("Login", "Home");
         }
+
+
         return View();
     }
 
@@ -67,9 +69,45 @@ public class HomeController : Controller
         {
             return RedirectToAction("Login", "Home");
         }
+
+
+        // using (var db = new ProjectContext())
+        // {
+        //     // Create sample data
+        //     var exchangeData = new List<Exchange>
+        //     {
+        //         new Exchange { AssetName = "Apple", Ticker = "AAPL", Shares = 100000, Circulating = 100000, Capital = 3000000 },
+        //         new Exchange { AssetName = "Nvidia", Ticker = "NVDI", Shares = 5000000, Circulating = 2000000, Capital = 100000000 },
+        //         // Add more sample data if needed
+        //     };
+
+        //     // Add sample data to the context
+        //     db.Exchange.AddRange(exchangeData);
+
+        //     // Save changes to the database
+        //     db.SaveChanges();
+        // }
+
+
         return View();
     }
 
+    [HttpPost]
+    public IActionResult IPO(IPO ipo)
+    {
+       Console.WriteLine("eneterd");
+
+        using(var db = new ProjectContext())
+        {
+            db.Add(ipo);
+            db.SaveChanges();
+        }
+
+        return View();
+    }
+
+    
+    
     [HttpPost]
     public IActionResult User(User user)
     {

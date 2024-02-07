@@ -1,8 +1,73 @@
+@model ASP.NET_project.Models.IPO
 @{
     ViewData["Title"] = "IPO";
 }
 
 <div class="text-center">
     <h1 class="display-4">IPO</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<style>
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    select,
+    input[type="date"] {
+        background-color: transparent;
+        color: white;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    button {
+        padding: 10px 20px;
+        @* background-color: #4CAF50; *@
+        color: white;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 200px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+</style>
+
+<body>
+    <div class="bottom" style="overflow-y: auto;">
+      <h2>Buy/Sell</h2>
+      <form action="#" method="post">
+        <label for="name">Business Name:</label>
+        <input type="text" id="name" name="AssetName" asp-for="AssetName" required>
+        <br>
+        <label for="Ticker">Ticker:</label>
+        <input type="text" id="ticker" name="ticker" asp-for="Ticker" required>
+        <br>
+        <label for="shares">shares:</label>
+        <input type="text" id="shares" name="shares" asp-for="Shares" required>
+        <br>
+        <label for="circulating">circulating:</label>
+        <input type="text" id="circulating" name="circulating" asp-for="Circulating" required>
+        <br>
+        <label for="capital">capital:</label>
+        <input type="text" id="capital" name="capital" asp-for="Capital" required>
+        <br>
+        <br>
+        <button type="submit" name="buy" class="btn btn-success">Commit</button>
+    </form>
+    </div>
+</body>
