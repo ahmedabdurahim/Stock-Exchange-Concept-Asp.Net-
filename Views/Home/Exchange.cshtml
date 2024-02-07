@@ -1,15 +1,168 @@
 @{
     ViewData["Title"] = "Exchange";
+
+     var randomStockTickers = new List<(string Ticker, decimal Price, int Quantity)>
+    {
+        ("AAPL", 150.20m, 10),
+        ("GOOGL", 2500.50m, 5),
+        ("AMZN", 3200.00m, 8),
+        ("MSFT", 300.10m, 12),
+        ("FB", 350.75m, 7),
+        ("TSLA", 800.00m, 3),
+        ("JPM", 150.40m, 15),
+        ("V", 220.30m, 20),
+        ("NVDA", 600.25m, 6),
+        ("NFLX", 550.50m, 4)
+    };
 }
 
 
+<style>
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    select,
+    input[type="date"] {
+        background-color: transparent;
+        color: white;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    button {
+        padding: 10px 20px;
+        @* background-color: #4CAF50; *@
+        color: white;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 200px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .bottom table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .bottom th,
+    .bottom td {
+        padding: 8px;
+        @* text-align: center; *@
+    }
+    
+    .bottom tr:hover {
+        background-color: lightgray;
+    }
+</style>
+
+
+
+
+<br>
+<br>
 <div class="text-center">
     <h1 class="display-4">Exchange</h1>
 </div>
-
+<br>
+<br>
 <body>
   <div class="container">
-    <div class="new"></div>
-    <div class="bottom"></div>
+    <h2>Market Overview</h2>
+    <div class="new">
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container" style="height:100%;width:100%">
+        <div id="tradingview_1772c" style="height:calc(100% - 32px);width:100%"></div>
+        @* <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div> *@
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+        new TradingView.widget(
+        {
+        "autosize": true,
+        "symbol": "OANDA:XAUUSD",
+        "interval": "15",
+        "timezone": "Europe/Istanbul",
+        "theme": "dark",
+        "style": "1",
+        "locale": "en",
+        "enable_publishing": false,
+        "backgroundColor": "rgba(7,7,31,1.00)",
+        "save_image": false,
+        "hide_volume": true,
+        "container_id": "tradingview_1772c"
+      }
+        );
+        </script>
+      </div>
+      <!-- TradingView Widget END -->
+    </div>
+
+
+
+    <div class="bottom" style="overflow-y: auto;">
+      <h2>Buy/Sell</h2>
+      <form method="post" action="/buy">
+        <label for="security">Security/Commodity:</label>
+        <select id="security" name="security">
+           @foreach (var stock in randomStockTickers)
+            {
+                <option value="@stock.Ticker">@stock.Ticker</option>
+            }
+        </select>
+        <br>
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price">
+        <br>
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" name="quantity">
+        <br>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+        <br>
+        <br>
+        <button type="submit" name="buy" class="btn btn-success">Buy</button>
+        <button type="submit" name="sell" class="btn btn-danger">Sell</button>
+    </form>
+    </div>
+
+    <div class="bottom">
+    <table>
+      <thead>
+          <tr>
+              <th>Asset Name</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Unrealized PnL</th>
+          </tr>
+      </thead>
+      <tbody>
+          @foreach (var stock in randomStockTickers)
+          {
+              var pnl = (stock.Price - 200) * stock.Quantity; // Assuming a fixed reference price of 200
+              <tr>
+                  <td>@stock.Ticker</td>
+                  <td>@stock.Quantity</td>
+                  <td>@stock.Price</td>
+                  <td style="color: @(pnl < 0 ? "red" : "green")">@pnl</td>
+              </tr>
+          }
+      </tbody>
+    </table>
+    </div>
   </div>
 </body>
