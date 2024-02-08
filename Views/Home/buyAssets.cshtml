@@ -1,0 +1,82 @@
+@{
+    ViewData["Title"] = "Buy Assets";
+}
+
+<style>
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    select,
+    input[type="date"] {
+        background-color: transparent;
+        color: white;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    button {
+        padding: 10px 20px;
+        @* background-color: #4CAF50; *@
+        color: white;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 200px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .bottom table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .bottom th,
+    .bottom td {
+        padding: 8px;
+        text-align: center;
+    }
+    
+    .bottom tr:hover {
+        background-color: #0c0c35;
+    }
+</style>
+
+<br>
+<br>
+<br>
+<body>
+    <div class="bottom" style="overflow-y: auto;">
+      <h2>Buy</h2>
+      <form method="get" action="/Home/CardProcessor">
+        <label for="security">Security/Commodity Ticker:</label>
+        <input type="text" id="ticker" name="ticker">
+        <br>
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" name="quantity">
+        <br>
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price">
+        <br>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+        <br>
+        <br>
+        <button type="submit" name="action" class="btn btn-success" value="buyButton" id="buyButton">Buy</button>
+    </form>
+    </div>
+</body>

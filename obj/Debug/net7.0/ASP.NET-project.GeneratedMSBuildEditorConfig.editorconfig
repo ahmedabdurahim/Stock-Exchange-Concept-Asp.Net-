@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /workspaces/ASP.NET-project
 build_property._RazorSourceGeneratorDebug = 
 
+[/workspaces/ASP.NET-project/Views/Home/buyAssets.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9idXlBc3NldHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/workspaces/ASP.NET-project/Views/Home/CardProcessor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DYXJkUHJvY2Vzc29yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/workspaces/ASP.NET-project/Views/Home/Commodities.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Db21tb2RpdGllcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -38,6 +46,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/workspaces/ASP.NET-project/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/workspaces/ASP.NET-project/Views/Home/sellAssets.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9zZWxsQXNzZXRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/workspaces/ASP.NET-project/Views/Home/User.cshtml]

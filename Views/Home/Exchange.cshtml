@@ -100,16 +100,16 @@
 
 
 
-    <div class="bottom" style="overflow-y: auto;">
+    @* <div class="bottom" style="overflow-y: auto;">
       <h2>Buy/Sell</h2>
       <form method="post" action="/Home/Exchange">
         <label for="security">Security/Commodity:</label>
-        @* <select id="security" name="security">
+        <select id="security" name="security">
            @foreach (var stock in Model)
             {
                 <option value="@stock.Ticker">@stock.Ticker</option>
             }
-        </select> *@
+        </select>
         <br>
         <label for="price">Price:</label>
         <input type="text" id="price" name="price">
@@ -124,7 +124,7 @@
         <button type="submit" name="action" class="btn btn-success" value="buyButton" id="buyButton">Buy</button>
         <button type="submit" name="action" class="btn btn-danger" value="sellButton" id="sellButton">Sell</button>
     </form>
-    </div>
+    </div> *@
 
     <div class="bottom">
     <h2>Open Positions</h2>
@@ -139,7 +139,7 @@
           </tr>
       </thead>
       <tbody>
-          @* @foreach (var stock in Model)
+          @foreach (var stock in Model)
           {
               var pnl = (stock.Capital - stock.Circulating) * stock.Circulating; // Assuming a fixed reference price of 200
               <tr>
@@ -149,7 +149,7 @@
                   <td>@stock.Capital</td>
                   <td style="color: @(pnl < 0 ? "red" : "green")">@pnl</td>
               </tr>
-          } *@
+          }
       </tbody>
     </table>
     </div>

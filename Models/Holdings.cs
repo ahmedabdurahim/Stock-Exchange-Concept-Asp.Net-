@@ -13,6 +13,7 @@ namespace ASP.NET_project.Models
         public string Ticker { get; set; }
         public double OpenPrice { get; set; }
         public string Date { get; set; }
+        public double Quantity { get; set; }
 
     }
 }
