@@ -44,7 +44,60 @@ public class HomeController : Controller
             return RedirectToAction("Login", "Home");
         }
 
+        // var randomStockTickers = new List<IPO>();
 
+        // // Create an instance of ProjectContext
+        // using (var context = new ProjectContext())
+        // {
+        //     // Retrieve values from the Exchanges table
+        //     var exchanges = context.IPO.ToList();
+
+        //     foreach (var exchange in exchanges)
+        //     {
+        //         var ticker = exchange.Ticker;
+        //         var value = exchange.Value;
+        //         var capital = exchange.Capital;
+        //         var circulating = exchange.Circulating;
+
+        //         var exchangeModel = new IPO
+        //         {
+        //             Ticker = ticker,
+        //             Value = value,
+        //             Capital = capital,
+        //             Circulating = circulating
+        //         };
+
+        //         randomStockTickers.Add(exchangeModel);
+        //     }
+        // }
+
+        List<IPO> stockData = GetData();
+
+        // Pass the randomStockTickers list to the view
+        return View(stockData);
+
+    }
+
+    [HttpPost]
+    public IActionResult Exchange(IFormCollection form)
+    {
+        Console.WriteLine(form);
+
+        if (form["action"] == "buy")
+        {
+            // Logic for buy action
+            Console.WriteLine("Buy button CLicked");
+
+            return RedirectToAction("BuySuccess");
+        }
+        else if (form["action"] == "sell")
+        {
+            // Logic for sell action
+            Console.WriteLine("sell Button Clicked");
+
+            return RedirectToAction("SellSuccess");
+        }
+        
         return View();
     }
 
@@ -158,5 +211,38 @@ public class HomeController : Controller
         Response.Cookies.Delete("email");
         Response.Cookies.Delete("password");
         return "Cookies are Deleted";
+    }
+
+
+    public List<IPO> GetData()
+    {
+        var randomStockTickers = new List<IPO>();
+
+        // Create an instance of ProjectContext
+        using (var context = new ProjectContext())
+        {
+            // Retrieve values from the IPO table
+            var exchanges = context.IPO.ToList();
+
+            foreach (var exchange in exchanges)
+            {
+                var ticker = exchange.Ticker;
+                var value = exchange.Value;
+                var capital = exchange.Capital;
+                var circulating = exchange.Circulating;
+
+                var exchangeModel = new IPO
+                {
+                    Ticker = ticker,
+                    Value = value,
+                    Capital = capital,
+                    Circulating = circulating
+                };
+
+                randomStockTickers.Add(exchangeModel);
+            }
+        }
+
+        return randomStockTickers;
     }
 }

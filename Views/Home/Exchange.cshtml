@@ -1,21 +1,9 @@
 @{
     ViewData["Title"] = "Exchange";
-
-     var randomStockTickers = new List<(string Ticker, decimal Price, decimal Entry, int Quantity)>
-    {
-        ("AAPL", 150.20m, 160.30m, 10),
-        ("GOOGL", 2500.50m, 2384.0m, 5),
-        ("AMZN", 3200.00m, 3101.12m, 8),
-        ("MSFT", 300.10m, 420.10m, 12),
-        ("FB", 350.75m, 355.98m, 7),
-        ("TSLA", 800.00m, 760.88m, 3),
-        ("JPM", 150.40m, 300.98m, 15),
-        ("V", 220.30m, 210.2m, 20),
-        ("NVDA", 600.25m, 542.33m, 6),
-        ("NFLX", 550.50m, 490.23m,4)
-    };
 }
+@model List<IPO>
 
+@* @model List<(string Ticker, decimal Value, decimal Capital, int Circulating)> *@
 
 <style>
     .form-group {
@@ -72,8 +60,6 @@
 </style>
 
 
-
-
 <br>
 <br>
 <div class="text-center">
@@ -116,14 +102,14 @@
 
     <div class="bottom" style="overflow-y: auto;">
       <h2>Buy/Sell</h2>
-      <form method="post" action="/buy">
+      <form method="post" action="/Home/Exchange">
         <label for="security">Security/Commodity:</label>
-        <select id="security" name="security">
-           @foreach (var stock in randomStockTickers)
+        @* <select id="security" name="security">
+           @foreach (var stock in Model)
             {
                 <option value="@stock.Ticker">@stock.Ticker</option>
             }
-        </select>
+        </select> *@
         <br>
         <label for="price">Price:</label>
         <input type="text" id="price" name="price">
@@ -135,8 +121,8 @@
         <input type="date" id="date" name="date">
         <br>
         <br>
-        <button type="submit" name="buy" class="btn btn-success">Buy</button>
-        <button type="submit" name="sell" class="btn btn-danger">Sell</button>
+        <button type="submit" name="action" class="btn btn-success" value="buyButton" id="buyButton">Buy</button>
+        <button type="submit" name="action" class="btn btn-danger" value="sellButton" id="sellButton">Sell</button>
     </form>
     </div>
 
@@ -153,19 +139,20 @@
           </tr>
       </thead>
       <tbody>
-          @foreach (var stock in randomStockTickers)
+          @* @foreach (var stock in Model)
           {
-              var pnl = (stock.Entry - stock.Price) * stock.Quantity; // Assuming a fixed reference price of 200
+              var pnl = (stock.Capital - stock.Circulating) * stock.Circulating; // Assuming a fixed reference price of 200
               <tr>
                   <td>@stock.Ticker</td>
-                  <td>@stock.Quantity</td>
-                  <td>@stock.Price</td>
-                  <td>@stock.Entry</td>
+                  <td>@stock.Circulating</td>
+                  <td>@stock.Value</td>
+                  <td>@stock.Capital</td>
                   <td style="color: @(pnl < 0 ? "red" : "green")">@pnl</td>
               </tr>
-          }
+          } *@
       </tbody>
     </table>
     </div>
   </div>
 </body>
+

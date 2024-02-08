@@ -10,6 +10,7 @@ namespace ASP.NET_project.Models
     {
         public DbSet<User> Users {get; set;}
         public DbSet<IPO> IPO {get; set;}
+        public DbSet<Holdings> Holdings { get; set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
          => options.UseSqlite(@"Data Source=database.db");
