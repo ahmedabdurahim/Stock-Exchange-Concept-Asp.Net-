@@ -1,7 +1,7 @@
 @{
     ViewData["Title"] = "Exchange";
 }
-@model List<IPO>
+@model List<Holdings>
 
 @* @model List<(string Ticker, decimal Value, decimal Capital, int Circulating)> *@
 
@@ -132,27 +132,30 @@
       <thead>
           <tr>
               <th>Asset Name</th>
+              <th>Open Price</th>
               <th>Quantity</th>
-              <th>Price</th>
               <th>Entry</th>
-              <th>Unrealized PnL</th>
+              @* <th>Unrealized PnL</th> *@
           </tr>
       </thead>
       <tbody>
           @foreach (var stock in Model)
           {
-              var pnl = (stock.Capital - stock.Circulating) * stock.Circulating; // Assuming a fixed reference price of 200
+              @* var pnl = (stock.Capital - stock.Circulating) * stock.Circulating; // Assuming a fixed reference price of 200 *@
               <tr>
                   <td>@stock.Ticker</td>
-                  <td>@stock.Circulating</td>
-                  <td>@stock.Value</td>
-                  <td>@stock.Capital</td>
-                  <td style="color: @(pnl < 0 ? "red" : "green")">@pnl</td>
+                  <td>@stock.OpenPrice</td>
+                  <td>@stock.Quantity</td>
+                  <td>@stock.Date</td>
               </tr>
           }
       </tbody>
     </table>
     </div>
+  </div>
+  <div class="buysellbtn">
+    <a href="@Url.Action("buyAssets", "Home")" class="btn btn-success">Buy Assets</a>
+    <a href="@Url.Action("sellAssets", "Home")" class="btn btn-danger">Sell Assets</a>
   </div>
 </body>
 

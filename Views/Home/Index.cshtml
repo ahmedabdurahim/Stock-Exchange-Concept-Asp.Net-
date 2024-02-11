@@ -2,7 +2,246 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+
+<style>
+    /* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set font styles and sizes */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+/* Define the header styles */
+header {
+  background-color: #333;
+  color: #0c0c35;
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+/* Style the main content sections */
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+/* Define specific section styles */
+#hero {
+  background-color: #0c0c35;
+  padding: 40px;
+  text-align: center;
+}
+
+#market-data {
+  background-color: #0c0c35;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#market-data table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#market-data th, #market-data td {
+  padding: 8px;
+  text-align: left;
+}
+
+#market-data th {
+  background-color: #0c0c35;
+  color: #fff;
+}
+
+#market-data tr:nth-child(even) {
+  background-color: #0c0c35;
+}
+
+#trading-tools {
+  background-color: #0c0c35;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#trading-tools ul {
+  margin-left: 20px;
+}
+
+#account {
+  background-color: #0c0c35;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#account ul {
+  margin-left: 20px;
+}
+
+#news {
+  background-color: #0c0c35;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#news article {
+  margin-bottom: 20px;
+}
+
+#news article h3 {
+  margin-bottom: 10px;
+}
+
+</style>
+
+<body>
+  <div class"tickers">
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+      {
+      "symbols": [
+        {
+          "proName": "FOREXCOM:SPXUSD",
+          "title": "S&P 500"
+        },
+        {
+          "proName": "FOREXCOM:NSXUSD",
+          "title": "US 100"
+        },
+        {
+          "proName": "FX_IDC:EURUSD",
+          "title": "EUR to USD"
+        },
+        {
+          "proName": "BITSTAMP:BTCUSD",
+          "title": "Bitcoin"
+        },
+        {
+          "proName": "BITSTAMP:ETHUSD",
+          "title": "Ethereum"
+        }
+      ],
+      "showSymbolLogo": true,
+      "isTransparent": true,
+      "displayMode": "adaptive",
+      "colorTheme": "dark",
+      "locale": "en"
+    }
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+  </div>
+    <main>
+    <section id="hero">
+      <h1>Welcome to Stock Exchange Website</h1>
+      <p>Stay updated with the latest market trends and make informed investment decisions.</p>
+    </section>
+
+    <section id="market-data">
+      <h2>Market Data</h2>
+      <table>
+        <tr>
+          <th>Symbol</th>
+          <th>Company</th>
+          <th>Price</th>
+          <th>Change</th>
+        </tr>
+        <tr>
+          <td>GOOG</td>
+          <td>Alphabet Inc.</td>
+          <td>$2,500.00</td>
+          <td>+1.5%</td>
+        </tr>
+        <tr>
+          <td>AAPL</td>
+          <td>Apple Inc.</td>
+          <td>$150.00</td>
+          <td>-0.8%</td>
+        </tr>
+        <tr>
+          <td>MSFT</td>
+          <td>Microsoft Corporation</td>
+          <td>$300.25</td>
+          <td>+2.2%</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="trading-tools">
+      <h2>Trading Tools</h2>
+      <ul>
+        <li>Real-time stock quotes</li>
+        <li>Watchlists and portfolio management</li>
+        <li>Advanced charting and technical analysis</li>
+        <li>Stock screeners</li>
+        <li>Alerts and notifications</li>
+      </ul>
+    </section>
+
+    <section id="account">
+      <h2>Account</h2>
+      <p>Login or create an account to access personalized features:</p>
+      <ul>
+        <li>Manage your portfolio</li>
+        <li>Execute trades</li>
+        <li>Review transaction history</li>
+        <li>Deposit and withdraw funds</li>
+      </ul>
+    </section>
+
+    <section id="news">
+      <h2>News</h2>
+      <article>
+        <h3>Stock Market Reaches New Highs</h3>
+        <p>The stock market continues its upward trend, breaking new records and reaching all-time highs. Analysts speculate on the reasons behind the surge and provide insights for investors.</p>
+      </article>
+      <article>
+        <h3>New Tech IPOs On the Horizon</h3>
+        <p>A wave of exciting technology companies is preparing to go public, unveiling their plans to offer shares to the public. Investors eagerly await opportunities to invest in the next big thing.</p>
+      </article>
+    </section>
+  </main>
+</body>
